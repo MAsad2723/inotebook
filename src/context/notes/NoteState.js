@@ -30,7 +30,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6599e427065e32f5066b3539",
+            "_id": "6599e427065e32f5066b35391",
             "user": "6599d170bcdede860867099d",
             "title": "Title No1",
             "description": "Mera pehla title agaya",
@@ -39,7 +39,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6599e427065e32f5066b3539",
+            "_id": "6599e427065e32f5066b35392",
             "user": "6599d170bcdede860867099d",
             "title": "Title No1",
             "description": "Mera pehla title agaya",
@@ -48,7 +48,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6599e427065e32f5066b3539",
+            "_id": "6599e427065e32f5066b35393",
             "user": "6599d170bcdede860867099d",
             "title": "Title No1",
             "description": "Mera pehla title agaya",
@@ -57,7 +57,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6599e427065e32f5066b3539",
+            "_id": "6599e427065e32f5066b35394",
             "user": "6599d170bcdede860867099d",
             "title": "Title No1",
             "description": "Mera pehla title agaya",
@@ -66,7 +66,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6599e427065e32f5066b3539",
+            "_id": "6599e427065e32f5066b35395",
             "user": "6599d170bcdede860867099d",
             "title": "Title No1",
             "description": "Mera pehla title agaya",
@@ -75,7 +75,7 @@ const NoteState = (props) => {
             "__v": 0
         },
         {
-            "_id": "6599e427065e32f5066b3539",
+            "_id": "6599e427065e32f5066b35396",
             "user": "6599d170bcdede860867099d",
             "title": "Title No1",
             "description": "Mera pehla title agaya",
@@ -85,8 +85,34 @@ const NoteState = (props) => {
         }
     ]
     const [notes, setNotes] = useState(notesInitial)
+
+    //Add a note
+    const addNote = (title, description, tag) => {
+        //Baad me krunga api call
+        const note = {
+            "_id": "6599e427065e32f5066b35397",
+            "user": "6599d170bcdede860867099d",
+            "title": title,
+            "description": description,
+            "tag": tag,
+            "date": Date.now,
+            "__v": 0
+        }
+        setNotes(notes.concat(note));
+    }
+
+    //Delete a note
+    const deleteNote = () => {
+
+    }
+
+    //Update a note
+    const updateNote = () => {
+
+    }
+
     return (
-        <NoteContext.Provider value={{ notes, setNotes }}>
+        <NoteContext.Provider value={{ notes, addNote, deleteNote, updateNote }}>
             {props.children}
         </NoteContext.Provider>
     )
