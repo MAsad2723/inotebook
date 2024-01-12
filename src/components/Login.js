@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-const Login = () => {
+const Login = (props) => {
     let history = useHistory();
     const [credentials, setcredentials] = useState({ email: '', password: '' })
     const host = "http://localhost:5000";
@@ -18,18 +18,21 @@ const Login = () => {
         console.log(json);
         if (json.success) {
             //Save the auth-token Redirect to main page
-            localStorage.setItem('token', json.authtoken);
+            localStorage.setItem('token', json.authToken);
+            console.log(localStorage.getItem('token'));
+            props.showAlert("Logged In Successfully", "success");
             history.push('/');
         }
         else {
-            alert("Invalid credentials");
+            props.showAlert("Invalid credentials", "danger");
         }
     }
     const onChange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
-        <div>
+        <div className='mt-2 container'>
+            <h2>Login to iNoteBook</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
